@@ -90,7 +90,7 @@ EleProbeVariablesToStore = cms.PSet(
     el_dxy           = cms.InputTag("eleVarHelper:dxy"),
     el_3charge       = cms.string("chargeInfo().isGsfCtfScPixConsistent"),
     el_ecalDriven    = cms.string("ecalDrivenSeed"),
-    el_sip3d         = cms.string("abs(dB('PV3D')/edB('PV3D'))")
+
     )
 
 PhoProbeVariablesToStore = cms.PSet(
