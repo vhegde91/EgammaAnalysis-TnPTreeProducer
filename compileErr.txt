@@ -1,0 +1,57 @@
+Reading cached build data
+>> Local Products Rules ..... started
+>> Local Products Rules ..... done
+>> Building CMSSW version CMSSW_8_0_27 ----
+------- copying files from src/EgammaAnalysis/TnPTreeProducer/scripts -------
+------- copying files from src/PhysicsTools/Heppy/scripts -------
+>> Subsystem BigProducts built
+>> copied heppy_report.py
+>> Creating project symlinks
+>> Entering Package EgammaAnalysis/ElectronTools
+>> copied cmsStageWithFailover.py
+>> copied cmsBatch.py
+>> Entering Package EgammaAnalysis/TnPTreeProducer
+>> copied crab
+>> Entering Package PhysicsTools/Heppy
+>> copied compareTrees
+/bin/rm -f lib/slc6_amd64_gcc530/pluginPhysicsToolsTagAndProbe_plugins.so lib/slc6_amd64_gcc530/PhysicsToolsTagAndProbe_plugins.edmplugin
+>> Entering Package PhysicsTools/TagAndProbe
+  src/EgammaAnalysis/ElectronTools/python -> python/EgammaAnalysis/ElectronTools
+>> Entering Package TopQuarkAnalysis/Configuration
+  src/EgammaAnalysis/TnPTreeProducer/python -> python/EgammaAnalysis/TnPTreeProducer
+>> Leaving Package PhysicsTools/TagAndProbe
+>> Package PhysicsTools/TagAndProbe built
+  src/PhysicsTools/Heppy/python -> python/PhysicsTools/Heppy
+  src/TopQuarkAnalysis/Configuration/python -> python/TopQuarkAnalysis/Configuration
+>> Leaving Package EgammaAnalysis/ElectronTools
+>> Leaving Package TopQuarkAnalysis/Configuration
+>> Package TopQuarkAnalysis/Configuration built
+>> Package EgammaAnalysis/ElectronTools built
+>> Leaving Package PhysicsTools/Heppy
+>> Subsystem TopQuarkAnalysis built
+>> Package PhysicsTools/Heppy built
+>> Subsystem PhysicsTools built
+Entering library rule at src/EgammaAnalysis/TnPTreeProducer/plugins
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/MiniAODL1CandProducer.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/IsolationSum.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/SelectorByValueMap.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/MiniAODTriggerCandProducer.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/SCVariableHelper.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/ElectronMatchedCandidateProducer.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/Nm1Selector.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/MyElectronVariableHelper.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/HLTVariableHelper.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/PileupWeightProducer.cc 
+>> Compiling edm plugin /afs/cern.ch/work/v/vhegde/public/EGamma_v2/CMSSW_8_0_27/src/EgammaAnalysis/TnPTreeProducer/plugins/ElectronVariableHelper.cc 
+>> Building edm plugin tmp/slc6_amd64_gcc530/src/EgammaAnalysis/TnPTreeProducer/plugins/EgammaAnalysisTnPTreeProducer_plugins/libEgammaAnalysisTnPTreeProducer_plugins.so
+tmp/slc6_amd64_gcc530/src/EgammaAnalysis/TnPTreeProducer/plugins/EgammaAnalysisTnPTreeProducer_plugins/IsolationSum.o: In function `IsolationSum::~IsolationSum()':
+IsolationSum.cc:(.text+0x2b): undefined reference to `EffectiveAreas::~EffectiveAreas()'
+tmp/slc6_amd64_gcc530/src/EgammaAnalysis/TnPTreeProducer/plugins/EgammaAnalysisTnPTreeProducer_plugins/IsolationSum.o: In function `IsolationSum::getPFIsolation(edm::Handle<std::vector<pat::PackedCandidate, std::allocator<pat::PackedCandidate> > >, reco::Candidate const*, double, double, double, double, bool)':
+IsolationSum.cc:(.text+0x68f): undefined reference to `EffectiveAreas::getEffectiveArea(float) const'
+tmp/slc6_amd64_gcc530/src/EgammaAnalysis/TnPTreeProducer/plugins/EgammaAnalysisTnPTreeProducer_plugins/IsolationSum.o: In function `IsolationSum::IsolationSum(edm::ParameterSet const&)':
+IsolationSum.cc:(.text+0x1242): undefined reference to `EffectiveAreas::EffectiveAreas(std::string const&)'
+IsolationSum.cc:(.text+0x1db5): undefined reference to `EffectiveAreas::~EffectiveAreas()'
+collect2: error: ld returned 1 exit status
+config/SCRAM/GMake/Makefile.rules:1937: recipe for target 'tmp/slc6_amd64_gcc530/src/EgammaAnalysis/TnPTreeProducer/plugins/EgammaAnalysisTnPTreeProducer_plugins/libEgammaAnalysisTnPTreeProducer_plugins.so' failed
+gmake: *** [tmp/slc6_amd64_gcc530/src/EgammaAnalysis/TnPTreeProducer/plugins/EgammaAnalysisTnPTreeProducer_plugins/libEgammaAnalysisTnPTreeProducer_plugins.so] Error 1
+gmake: *** [There are compilation/build errors. Please see the detail log above.] Error 2
