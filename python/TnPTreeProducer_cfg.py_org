@@ -247,28 +247,6 @@ process.tnpEleIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                         passingMVA80Xwp80 = cms.InputTag("probeEleMVA80Xwp80" ),
                                         )
                                     )
-process.MyEleVars = cms.EDProducer("MyElectronVariableHelper",
-                                   probes         = cms.InputTag(options['ELECTRON_COLL']),
-                                   mvas           = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring15NonTrig25nsV1Values"),
-                                   dxy            = cms.InputTag("eleVarHelper:dxy"),
-                                   dz             = cms.InputTag("eleVarHelper:dz"),
-                                   miniIso        = cms.InputTag("relminiiso:sum"),
-                                   chargedMiniIso = cms.InputTag("relminiiso:charged"),
-                                   neutralMiniIso = cms.InputTag("relminiiso:neutral"),
-                                   jetPtRatio     = cms.InputTag("AddLeptonJetRelatedVariables","JetPtRatio"),
-                                   jetPtRel       = cms.InputTag("AddLeptonJetRelatedVariables","JetPtRel"),
-                                   jetNDauCharged = cms.InputTag("AddLeptonJetRelatedVariables","JetNDauCharged"),
-                                   jetBTagCSV     = cms.InputTag("AddLeptonJetRelatedVariables","JetBTagCSV"),
-                                   )
-process.relminiiso =  cms.EDProducer("IsolationSum",
-                                     effAreasConfigFile = cms.FileInPath('RecoEgamma/ElectronIdentification/data/Spring15/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_25ns.txt'),
-                                     rho                = cms.InputTag("fixedGridRhoFastjetAll"),
-                                     candidates         = cms.InputTag("packedPFCandidates"),
-                                     probes             = cms.InputTag("slimmedElectrons"),
-                                     minRadius          = cms.double(0.05),
-                                     maxRadius          = cms.double(0.2),
-                                     ktScale            = cms.double(10.),
-                                     )
 
 process.tnpPhoIDs = cms.EDAnalyzer("TagProbeFitTreeProducer",
                                     tnpVars.mcTruthCommonStuff, tnpVars.CommonStuffForPhotonProbe,
@@ -322,8 +300,6 @@ process.p = cms.Path(
         process.tnpPairs_sequence +
         process.mc_sequence       +
         process.eleVarHelper      +
-        process.MyEleVars         +
-        process.relminiiso        +
         process.tree_sequence 
         )
 
