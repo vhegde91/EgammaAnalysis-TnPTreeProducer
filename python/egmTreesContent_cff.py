@@ -69,7 +69,8 @@ EleProbeVariablesToStore = cms.PSet(
     el_nonTrigMVA80X = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16GeneralPurposeV1Values"),
     el_hzzMVA80X     = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16HZZV1Values"),
     el_trigMVA       = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring15Trig25nsV1Values"),
-     
+    el_MVA94Xnoiso   = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Fall17NoIsoV1Values"),
+ 
     #isolation
     el_chIso         = cms.string("pfIsolationVariables().sumChargedHadronPt"),
     el_phoIso        = cms.string("pfIsolationVariables().sumPhotonEt"),
