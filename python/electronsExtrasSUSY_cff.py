@@ -22,6 +22,10 @@ workingPoints = ["ConvVeto", "MVAVLooseFO", "MVAVLoose", "Mini", "Mini2", "Mini4
 
 def addSusyIDs(process, options):
 
+    do2016_94X = True
+    doJEC = True
+
+
     # For some reason importing the NanoAOD configuration breakes VID, so we need to make 
     # sure these lines are called before calling setIDs() in the egmTreesSetup
     from PhysicsTools.NanoAOD.electrons_cff import isoForEle 
@@ -29,14 +33,13 @@ def addSusyIDs(process, options):
     from PhysicsTools.NanoAOD.electrons_cff import slimmedElectronsWithUserData
     from PhysicsTools.NanoAOD.electrons_cff import electronMVATTH
 
-    doJEC = True
     if (doJEC):
         from PhysicsTools.NanoAOD.jets_cff import updatedJets
-        from PhysicsTools.NanoAOD.jets_cff import jetCorrFactors # is this needed?
-        jetCorrFactors.src ='slimmedJets'
+        from PhysicsTools.NanoAOD.jets_cff import jetCorrFactorsNano # is this needed?
+        jetCorrFactorsNano.src ='slimmedJets'
         updatedJets.jetSource ='slimmedJets'
         process.updatedJets = updatedJets
-        process.jetCorrFactors = jetCorrFactors
+        process.jetCorrFactorsNano = jetCorrFactorsNano
     else:
         ptRatioRelForEle.srcJet = cms.InputTag("slimmedJets")
 
@@ -49,6 +52,7 @@ def addSusyIDs(process, options):
     ptRatioRelForEleUncorr = ptRatioRelForEle.clone()
     ptRatioRelForEleUncorr.srcJet = cms.InputTag("slimmedJets")
     process.ptRatioRelForEleUncorr = ptRatioRelForEleUncorr
+
 
 
     # Make a new electron collection, with additional variables that are used for the LeptonMVA below
@@ -79,6 +83,26 @@ def addSusyIDs(process, options):
         )
 
     process.electronMVATTH.src = cms.InputTag("slimmedElectronsWithUserDataWithVID")
+    if (do2016_94X) : 
+        process.electronMVATTH.src = cms.InputTag("slimmedElectronsWithUserDataWithVID")
+        process.electronMVATTH.variables = cms.PSet(
+            LepGood_pt = cms.string("pt"),
+            LepGood_eta = cms.string("eta"),
+            LepGood_jetNDauChargedMVASel = cms.string("?userCand('jetForLepJetVar').isNonnull()?userFloat('jetNDauChargedMVASel'):0"),
+            LepGood_miniRelIsoCharged = cms.string("userFloat('miniIsoChg')/pt"),
+            LepGood_miniRelIsoNeutral = cms.string("(userFloat('miniIsoAll')-userFloat('miniIsoChg'))/pt"),
+            LepGood_jetPtRelv2 = cms.string("?userCand('jetForLepJetVar').isNonnull()?userFloat('ptRel'):0"),
+            LepGood_jetPtRatio = cms.string("?userCand('jetForLepJetVar').isNonnull()?min(userFloat('ptRatio'),1.5):1"),
+            LepGood_jetBTagCSV = cms.string("?userCand('jetForLepJetVar').isNonnull()?max(userCand('jetForLepJetVar').bDiscriminator('pfCombinedInclusiveSecondaryVertexV2BJetTags'),0.0):0.0"),
+            LepGood_sip3d = cms.string("abs(dB('PV3D')/edB('PV3D'))"),
+            LepGood_dxy = cms.string("log(abs(dB('PV2D')))"),
+            LepGood_dz = cms.string("log(abs(dB('PVDZ')))"),
+#            LepGood_mvaIdFall17noIso = None,
+            LepGood_mvaIdSpring16HZZ = cms.string("userFloat('mvaSpring16HZZ')")
+#            LepGood_mvaIdSpring16HZZ = cms.string("userFloat('ElectronMVAEstimatorRun2Spring16HZZV1Values')")
+            )
+        process.electronMVATTH.weightFile = "PhysicsTools/NanoAOD/data/el_BDTG.weights.xml"
+        process.electronMVATTH.variablesOrder = ["LepGood_pt","LepGood_eta","LepGood_jetNDauChargedMVASel","LepGood_miniRelIsoCharged","LepGood_miniRelIsoNeutral","LepGood_jetPtRelv2","LepGood_jetPtRatio","LepGood_jetBTagCSV","LepGood_sip3d","LepGood_dxy","LepGood_dz","LepGood_mvaIdSpring16HZZ"]
 
     # At the end of this, everything we need is either a userfloat or in a producer linked with slimmedElectronsWithUserData or slimmedElectronsWithUserDataWithVID
 
@@ -88,9 +112,7 @@ def addSusyIDs(process, options):
     process.susyEleVarHelper = cms.EDProducer("SusyElectronVariableHelper",
         probes         = cms.InputTag("slimmedElectronsWithUserData"),
         probesWithLepMVA = cms.InputTag("slimmedElectronsWithUserDataWithVID"),        
-
         mvas           = cms.InputTag("electronMVAValueMapProducer:ElectronMVAEstimatorRun2Spring16GeneralPurposeV1Values"),
-
         dxy            = cms.InputTag("eleVarHelper:dxy"),
         dz             = cms.InputTag("eleVarHelper:dz"),
         leptonMvas     = cms.InputTag("electronMVATTH"),
@@ -105,9 +127,10 @@ def addSusyIDs(process, options):
     process.susy_sequence = cms.Sequence()
 
     if (doJEC) :
-        process.susy_sequence += process.jetCorrFactors
+        process.susy_sequence += process.jetCorrFactorsNano
         process.susy_sequence += process.updatedJets
-        process.susy_sequence += process.ptRatioRelForEleUncorr
+    
+    process.susy_sequence += process.ptRatioRelForEleUncorr
 
     process.susy_sequence += process.isoForEle
     process.susy_sequence += process.ptRatioRelForEle
@@ -115,8 +138,9 @@ def addSusyIDs(process, options):
 
     process.susy_sequence_requiresVID = cms.Sequence(
         process.slimmedElectronsWithUserDataWithVID + 
-        process.electronMVATTH + 
+        process.electronMVATTH  + 
         process.susyEleVarHelper
         )
 
+ 
 

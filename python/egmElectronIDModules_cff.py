@@ -151,6 +151,8 @@ def setIDs(process, options):
 
     if options['addSUSY'] :
 
+        process.electronMVAVariableHelper.srcMiniAOD = cms.InputTag(options['ELECTRON_COLL']) # Otherwise this links to wrong electron collection
+
         from EgammaAnalysis.TnPTreeProducer.electronsExtrasSUSY_cff  import workingPoints
 
         process.susy_ele_sequence = cms.Sequence()
