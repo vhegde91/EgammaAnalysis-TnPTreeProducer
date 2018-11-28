@@ -142,14 +142,14 @@ namespace{
   }
 
   // 94X cuts based on Version 52 of https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Offline_selection_criteria
-  // Fall17                               Veto B    Loose B   Medium B  Tight B    Veto E   Loose E   Medium E  Tight E
-  std::vector<float> maxSigmaIetaIeta94X = {0.0128,   0.0105,   0.0105,   0.0104,    0.0445,  0.0356,   0.0309,   0.0305};
-  std::vector<float> maxDEtaIn94X        = {0.00523,  0.00387,  0.00365,  0.00353,   0.00984, 0.0072,   0.00625,  0.00567};
-  std::vector<float> maxDPhiIn94X        = {0.159,    0.0716,   0.0588,   0.0499,    0.157,   0.147,    0.0355,   0.0165};
-  std::vector<float> maxHOverE94X        = {0.05,     0.05,     0.025,    0.26,      0.05,    0.0414,   0.026,    0.026};
-  std::vector<float> maxOoEmooP94X       = {0.193,    0.102,    0.0174,   0.012,     0.0962,  0.0875,   0.0335,   0.0158};
-  std::vector<float> maxd094X            = {0.05,     0.05,     0.05,     0.05,      0.10,    0.10,     0.10,     0.10};
-  std::vector<float> maxdz94X            = {0.10,     0.10,     0.10,     0.10,      0.20,    0.20,     0.20,     0.20};
+  // Fall17                               Veto B    Loose B   Medium B  Tight B    Veto E  Loose E  Medium E  Tight E
+  std::vector<float> maxSigmaIetaIeta94X = {0.0128,  0.0105,  0.0105,    0.0104,  0.0445,  0.0356,  0.0309,   0.0305};
+  std::vector<float> maxDEtaIn94X        = {0.00523, 0.00387, 0.00365,   0.00353, 0.00984, 0.0072,  0.00625,  0.00567};
+  std::vector<float> maxDPhiIn94X        = {0.159,   0.0716,  0.0588,    0.0499,  0.157,   0.147,   0.0355,   0.0165};
+  std::vector<float> maxHOverE94X        = {0.05,    0.05,    0.026,     0.026,   0.05,    0.0414,  0.026,    0.026};
+  std::vector<float> maxOoEmooP94X       = {0.193,   0.129,   0.0327,    0.0278,  0.0962,  0.0875,  0.0335,   0.0158};
+  std::vector<float> maxd094X            = {0.05,    0.05,    0.05,      0.05,    0.10,    0.10,    0.10,     0.10};
+  std::vector<float> maxdz94X            = {0.10,    0.10,    0.10,      0.10,    0.20,    0.20,    0.20,     0.20};
   std::vector<int>   maxMissingHits94X   = {2,        1,        1,        1,         3,       1,        1,        1};
   std::vector<bool>  convVeto94X         = {true,     true,     true,     true,      true,    true,     true,     true};
 
@@ -170,20 +170,56 @@ namespace{
 
     float eInvMinusPInv = std::abs(1.0 - ele.eSuperClusterOverP())/ele.ecalEnergy();
 
-    if(ele.full5x5_sigmaIetaIeta()               >= maxSigmaIetaIeta[level]) return false;
-    if(abs(dEtaInSeed(ele))                      >= maxDEtaIn[level])        return false;
-    if(abs(ele.deltaPhiSuperClusterTrackAtVtx()) >= maxDPhiIn[level])        return false;
-    if(! passHoverE( ele, rho, maxHOverE[level]) )                           return false;
-    if(eInvMinusPInv                             >= maxOoEmooP[level])       return false;
-    if(abs(dxy)                                  >= maxd0[level])            return false;
-    if(abs(dz)                                   >= maxdz[level])            return false;
-    if(missingHits                               >  maxMissingHits[level])   return false;
-    if(convVeto[level] and not ele.passConversionVeto())                     return false;
+    if(ele.full5x5_sigmaIetaIeta()               >= maxSigmaIetaIeta94X[level]) return false;
+    if(abs(dEtaInSeed(ele))                      >= maxDEtaIn94X[level])        return false;
+    if(abs(ele.deltaPhiSuperClusterTrackAtVtx()) >= maxDPhiIn94X[level])        return false;
+    if(! passHoverE( ele, rho, maxHOverE94X[level]) )                           return false;
+    if(eInvMinusPInv                             >= maxOoEmooP94X[level])       return false;
+    if(abs(dxy)                                  >= maxd094X[level])            return false;
+    if(abs(dz)                                   >= maxdz94X[level])            return false;
+    if(missingHits                               >  maxMissingHits94X[level])   return false;
+    if(convVeto94X[level] and not ele.passConversionVeto())                     return false;
+
+    return true;
+  }
+  //--------------------------- Fall17 94X V2 EGM cut based IDs, w/o iso --------------------------
+  // Fall17 V2                                Veto B    Loose B   Medium B  Tight B    Veto E   Loose E   Medium E  Tight E
+  std::vector<float> maxSigmaIetaIeta94XV2 = {0.0126,   0.0112,   0.0106,   0.0104,    0.0457,   0.0425,   0.0387,   0.0353};
+  std::vector<float> maxDEtaIn94XV2        = {0.00463,  0.00377,  0.0032,   0.00255,   0.00814,  0.00674,  0.00632,  0.00501};
+  std::vector<float> maxDPhiIn94XV2        = {0.148,    0.0884,   0.0547,   0.022,     0.19,     0.169,    0.0394,   0.0236};
+  std::vector<float> maxHOverE94XV2        = {0.05,     0.05,     0.046,    0.026,     0.05,     0.0441,   0.0275,   0.0188};
+  std::vector<float> maxHOverE_p1_94XV2    = {1.16,     1.16,     1.16,     1.15,      2.54,     2.54,     2.52,     2.06};
+  std::vector<float> maxHOverE_p2_94XV2    = {0.0324,   0.0324,   0.0324,   0.0324,    0.183,    0.183,    0.183,    0.183};
+  std::vector<float> maxOoEmooP94XV2       = {0.209,    0.193,    0.184,    0.159,     0.132,    0.111,    0.0721,   0.0197};
+  std::vector<float> maxd094XV2            = {0.05,     0.05,     0.05,     0.05,      0.10,     0.10,     0.10,     0.10};
+  std::vector<float> maxdz94XV2            = {0.10,     0.10,     0.10,     0.10,      0.20,     0.20,     0.20,     0.20};
+  std::vector<int>   maxMissingHits94XV2   = {2,        1,        1,        1,         3,        1,        1,        1};
+  std::vector<bool>  convVeto94XV2         = {true,     true,     true,     true,      true,     true,     true,     true};
+
+  bool passHoverE94XV2(const pat::Electron &ele, double rho, int level ) {
+    return (ele.hadronicOverEm() < maxHOverE94XV2[level] + (maxHOverE_p1_94XV2[level])/ele.superCluster()->energy() + (maxHOverE_p2_94XV2[level])*rho/ele.superCluster()->energy());
+  }
+
+  bool PassCutBased94XV2(const pat::Electron &ele, float dxy, float dz, int missingHits, double rho, int level){
+    if(ele.isEB())      level = level;
+    else                level = level + 4;
+
+    float eInvMinusPInv = std::abs(1.0 - ele.eSuperClusterOverP())/ele.ecalEnergy();
+
+    if(ele.full5x5_sigmaIetaIeta()               >= maxSigmaIetaIeta94XV2[level]) return false;
+    if(abs(dEtaInSeed(ele))                      >= maxDEtaIn94XV2[level])        return false;
+    if(abs(ele.deltaPhiSuperClusterTrackAtVtx()) >= maxDPhiIn94XV2[level])        return false;
+    if(! passHoverE94XV2( ele, rho, level) )                                      return false;
+    if(eInvMinusPInv                             >= maxOoEmooP94XV2[level])       return false;
+    if(abs(dxy)                                  >= maxd094XV2[level])            return false;
+    if(abs(dz)                                   >= maxdz94XV2[level])            return false;
+    if(missingHits                               >  maxMissingHits94XV2[level])   return false;
+    if(convVeto94XV2[level] and not ele.passConversionVeto())                     return false;
 
     return true;
   }
 
-
+  //-----------------------------------------------------------------------------------------------
   bool PassMultiIso(TString level, double mini_iso, double jetPtRatio, double jetPtRel){
     if(level == "VL") return mini_iso < 0.25 && (jetPtRatio > 0.67 || jetPtRel > 4.4);
     if(level == "L")  return mini_iso < 0.20 && (jetPtRatio > 0.69 || jetPtRel > 6.0);
@@ -248,6 +284,7 @@ SusyElectronVariableHelper::SusyElectronVariableHelper(const edm::ParameterSet &
 		     "MultiIsoM", "MultiIsoT", "MultiIsoVT", "MultiIsoEmu", "LeptonMvaM", "LeptonMvaVT",
          "CutBasedVetoNoIso", "CutBasedLooseNoIso", "CutBasedMediumNoIso", "CutBasedTightNoIso",
          "CutBasedVetoNoIso94X", "CutBasedLooseNoIso94X", "CutBasedMediumNoIso94X", "CutBasedTightNoIso94X",
+         "CutBasedVetoNoIso94XV2", "CutBasedLooseNoIso94XV2", "CutBasedMediumNoIso94XV2", "CutBasedTightNoIso94XV2",
 		     "CutBasedMediumMini", "CutBasedTightMini", "CutBasedMediumMini94X", "CutBasedTightMini94X", "CutBasedStopsDilepton",
 		     "LeptonMvaVTIDEmuTightIP2DSIP3D8miniIso04", "LeptonMvaMIDEmuTightIP2DSIP3D8miniIso04"};
 
@@ -342,6 +379,10 @@ void SusyElectronVariableHelper::produce(edm::Event & iEvent, const edm::EventSe
     passWorkingPoints["CutBasedLooseNoIso94X"].push_back( PassCutBased94X(probe, dxy, dz, missingInnerHits, rho, 1));
     passWorkingPoints["CutBasedMediumNoIso94X"].push_back(PassCutBased94X(probe, dxy, dz, missingInnerHits, rho, 2));
     passWorkingPoints["CutBasedTightNoIso94X"].push_back( PassCutBased94X(probe, dxy, dz, missingInnerHits, rho, 3));
+    passWorkingPoints["CutBasedVetoNoIso94XV2"].push_back(  PassCutBased94XV2(probe, dxy, dz, missingInnerHits, rho, 0));
+    passWorkingPoints["CutBasedLooseNoIso94XV2"].push_back( PassCutBased94XV2(probe, dxy, dz, missingInnerHits, rho, 1));
+    passWorkingPoints["CutBasedMediumNoIso94XV2"].push_back(PassCutBased94XV2(probe, dxy, dz, missingInnerHits, rho, 2));
+    passWorkingPoints["CutBasedTightNoIso94XV2"].push_back( PassCutBased94XV2(probe, dxy, dz, missingInnerHits, rho, 3));
 
     passWorkingPoints["MVAVLooseMini"].push_back(                           combine(passWorkingPoints, {"MVAVLoose", "Mini"}));
     passWorkingPoints["MVAVLooseMini2"].push_back(                          combine(passWorkingPoints, {"MVAVLoose", "Mini2"}));

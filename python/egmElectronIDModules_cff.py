@@ -150,6 +150,8 @@ def setIDs(process, options):
     process.tagEleCutBasedTight.selection = cms.InputTag("egmGsfElectronIDs:cutBasedElectronID-Fall17-94X-V2-tight")
 
     if options['addSUSY'] :
+        
+        process.electronMVAVariableHelper.srcMiniAOD = cms.InputTag(options['ELECTRON_COLL']) # Otherwise this links to wrong el
 
         from EgammaAnalysis.TnPTreeProducer.electronsExtrasSUSY_cff  import workingPoints
 

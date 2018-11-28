@@ -188,3 +188,21 @@ DEBUG 2018-09-20 13:46:24,777: 	 Executing :
  retcode : 0
 DEBUG 2018-09-20 13:46:24,777: 	 Proxy valid for 19:21:52 hours
 DEBUG 2018-09-20 13:46:24,778: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2018-11-24 08:39:58,405: 	 Executing command: 'resubmit'
+DEBUG 2018-11-24 08:39:58,405: 	 Found CRAB cache file /afs/cern.ch/user/v/vhegde/.crab3
+ERROR 2018-11-24 08:39:58,406: 	 Error: crab_Run2018_Partial_TreeV1/crab_Run2018D_PromptReco-v is not a valid CRAB project directory.
+ERROR 2018-11-24 08:39:58,406: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/resubmit.py", line 28, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 262, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/resubmit.py", line 276, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 575, in validateOptions
+    raise ConfigurationException(msg)
+ConfigurationException: [91mError[0m: crab_Run2018_Partial_TreeV1/crab_Run2018D_PromptReco-v is not a valid CRAB project directory.
