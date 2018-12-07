@@ -71,7 +71,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "includeSUSY", False,
+    "includeSUSY", True,
 #    "isAOD", True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
