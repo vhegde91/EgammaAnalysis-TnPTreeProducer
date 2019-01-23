@@ -2,7 +2,7 @@ from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 import sys
 config = config()
 
-submitVersion = "Moriond18_V4"
+submitVersion = "Moriond18_V5"
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=False'
 #doHLTTree = 'doTrigger=False'
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     config.Data.splitting     = 'FileBased'
     config.Data.unitsPerJob   = 8
 #    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=94X_mc2017_realistic_v10']
-    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=94X_mc2017_realistic_v13']
+    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=94X_mc2017_realistic_v17']
 
 
     config.General.requestName  = 'DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8'
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 #    config.Data.runRange         = '297050'
     config.Data.unitsPerJob   = 100
 #    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_ReReco17_forValidation']
-    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_v6']
+    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_v11']
  
     config.General.requestName  = '31Mar2018_RunB'
     config.Data.inputDataset    = '/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD'

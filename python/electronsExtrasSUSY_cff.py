@@ -15,6 +15,7 @@ workingPoints = ["ConvVeto", "MVAVLooseFO", "MVAVLoose", "Mini", "Mini2", "Mini4
      "MultiIsoM", "MultiIsoT", "MultiIsoVT", "MultiIsoEmu", "LeptonMvaM", "LeptonMvaVT",
      "CutBasedVetoNoIso", "CutBasedLooseNoIso", "CutBasedMediumNoIso", "CutBasedTightNoIso",
      "CutBasedVetoNoIso94X", "CutBasedLooseNoIso94X", "CutBasedMediumNoIso94X", "CutBasedTightNoIso94X",
+     "CutBasedVetoNoIso94XV2", "CutBasedLooseNoIso94XV2", "CutBasedMediumNoIso94XV2", "CutBasedTightNoIso94XV2",
      "CutBasedMediumMini", "CutBasedTightMini", "CutBasedMediumMini94X", "CutBasedTightMini94X", "CutBasedStopsDilepton",
      "LeptonMvaVTIDEmuTightIP2DSIP3D8miniIso04", "LeptonMvaMIDEmuTightIP2DSIP3D8miniIso04"]
 
