@@ -7,7 +7,9 @@ filesMiniAOD_Preliminary2017 = {
         ),
     
     'data' : cms.untracked.vstring( 
-        '/store/data/Run2017B/SingleElectron/MINIAOD/17Nov2017-v1/40000/064D4B85-E9DB-E711-8B34-02163E019D0E.root',
+#        '/store/data/Run2017B/SingleElectron/MINIAOD/17Nov2017-v1/60000/C29952F7-1DE4-E711-8FD2-02163E011C9E.root',
+        '/store/data/Run2017B/SingleElectron/MINIAOD/31Mar2018-v1/90000/FC89D712-AF37-E811-AD13-008CFAC93F84.root ',
+#        '/store/data/Run2017B/SingleElectron/MINIAOD/17Nov2017-v1/40000/064D4B85-E9DB-E711-8B34-02163E019D0E.root',
         #        '/store/data/Run2017C/SingleElectron/MINIAOD/PromptReco-v1/000/299/368/00000/08588A8B-836D-E711-8ACF-02163E01A3AC.root',
         #        '/store/data/Run2017B/SingleElectron/MINIAOD/PromptReco-v1/000/297/050/00000/166F7BB0-3C56-E711-BD8B-02163E0145C5.root',     
         )
