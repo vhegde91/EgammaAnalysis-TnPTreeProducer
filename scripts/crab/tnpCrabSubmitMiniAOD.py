@@ -65,7 +65,7 @@ if __name__ == '__main__':
     config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
 #    submit(config)
     config.General.requestName  = 'DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8_FastSim'
-    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PUFall17Fast_pilot_94X_mc2017_realistic_v15_ext1-v1/MINIAODSIM '
+    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PUFall17Fast_pilot_94X_mc2017_realistic_v15_ext1-v1/MINIAODSIM'
     submit(config)
 
     ##### now submit DATA

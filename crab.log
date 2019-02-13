@@ -1,0 +1,20 @@
+DEBUG 2019-02-13 10:38:09,330: 	 Executing command: 'submit'
+DEBUG 2019-02-13 10:38:09,341: 	 Found CRAB cache file /afs/cern.ch/user/v/vhegde/.crab3
+DEBUG 2019-02-13 10:38:09,353: 	 Checking credentials
+DEBUG 2019-02-13 10:38:09,354: 	 Found proxy file /tmp/x509up_u79799
+DEBUG 2019-02-13 10:38:09,354: 	 Getting proxy life time left
+DEBUG 2019-02-13 10:38:10,375: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u79799 -timeleft
+ output : 41753
+
+ error: 
+ retcode : 0
+DEBUG 2019-02-13 10:38:11,384: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u79799 -actimeleft
+ output : 41752
+
+ error: 
+ retcode : 0
+DEBUG 2019-02-13 10:38:11,384: 	 Proxy lifetime 41753 secs is different from voms extension lifetime 41752 secs for proxy: /tmp/x509up_u79799
+DEBUG 2019-02-13 10:38:11,384: 	 Proxy valid for 11:35:52 hours
+DEBUG 2019-02-13 10:38:11,385: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
