@@ -16,7 +16,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "doEleID", False,
+    "doEleID", True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Include tree for photon ID SF"
@@ -73,6 +73,12 @@ varOptions.register(
     "Global Tag to be used"
     )
 
+varOptions.register(
+    "includeSUSY", True,
+    VarParsing.multiplicity.singleton,
+    VarParsing.varType.bool,
+    "add also the variables used by SUSY"
+    )
 
 
 varOptions.parseArguments()
@@ -147,7 +153,9 @@ if varOptions.GT != "auto" :
 ###################################################################
 ## Define input files for test local run
 ###################################################################
-from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesMiniAOD_Preliminary2017 as inputs
+#from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesMiniAOD_Preliminary2017 as inputs
+from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesFastSim as inputs
+
 if options['useAOD'] : from EgammaAnalysis.TnPTreeProducer.etc.tnpInputTestFiles_cff import filesAOD_23Sep2016 as inputs #switch to 2017 samples if want to cmsRun on AOD
     
 options['INPUT_FILE_NAME'] = inputs['data']
@@ -336,7 +344,7 @@ if (not options['DEBUG']):
     process.outpath.remove(process.out)
 
 process.p = cms.Path(
-        process.hltFilter         +
+#        process.hltFilter         + # Turn off for FastSim
         process.cand_sequence     + 
         process.tnpPairs_sequence +
         process.mc_sequence       +

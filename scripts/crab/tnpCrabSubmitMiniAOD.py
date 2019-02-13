@@ -2,7 +2,7 @@ from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 import sys
 config = config()
 
-submitVersion = "Moriond18_V5"
+submitVersion = "Moriond18_FastSimV1"
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=False'
 #doHLTTree = 'doTrigger=False'
@@ -15,7 +15,7 @@ config.General.transferLogs = False
 config.JobType.pluginName  = 'Analysis'
 
 # Name of the CMSSW configuration file
-config.JobType.psetName  = '/afs/cern.ch/work/v/vhegde/public/EGamma_v3/withSUSYids_v3/CMSSW_9_4_7/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
+config.JobType.psetName  = '/afs/cern.ch/work/v/vhegde/public/EGamma_FastSim/Run2017/CMSSW_9_4_7/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
 #config.Data.allowNonValidInputDataset = False
 config.JobType.sendExternalFolder     = True
 
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     ##### submit MC
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
     config.Data.splitting     = 'FileBased'
-    config.Data.unitsPerJob   = 8
+    config.Data.unitsPerJob   = 5
 #    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=94X_mc2017_realistic_v10']
     config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=94X_mc2017_realistic_v17']
 
@@ -64,6 +64,9 @@ if __name__ == '__main__':
     config.General.requestName  = 'DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8'
     config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
 #    submit(config)
+    config.General.requestName  = 'DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8_FastSim'
+    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PUFall17Fast_pilot_94X_mc2017_realistic_v15_ext1-v1/MINIAODSIM '
+    submit(config)
 
     ##### now submit DATA
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'data')
@@ -76,7 +79,7 @@ if __name__ == '__main__':
  
     config.General.requestName  = '31Mar2018_RunB'
     config.Data.inputDataset    = '/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD'
-    submit(config)    
+#    submit(config)    
     config.General.requestName  = '31Mar2018_RunC'
     config.Data.inputDataset    = '/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD'
 #    submit(config)    
@@ -89,20 +92,3 @@ if __name__ == '__main__':
     config.General.requestName  = '31Mar2018_RunF'
     config.Data.inputDataset    = '/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD'
 #    submit(config)    
-
-
-
-
-
-#/SingleElectron/Run2017A-PromptReco-v2/MINIAOD
-#/SingleElectron/Run2017A-PromptReco-v3/MINIAOD
-#/SingleElectron/Run2017B-PromptReco-v1/MINIAOD
-#/SingleElectron/Run2017B-PromptReco-v2/MINIAOD
-#/SingleElectron/Run2017C-PromptReco-v1/MINIAOD
-#/SingleElectron/Run2017C-PromptReco-v2/MINIAOD
-#/SingleElectron/Run2017C-PromptReco-v3/MINIAOD
-#/SingleElectron/Run2017D-PromptReco-v1/MINIAOD
-#/SingleElectron/Run2017E-PromptReco-v1/MINIAOD
-
-
-

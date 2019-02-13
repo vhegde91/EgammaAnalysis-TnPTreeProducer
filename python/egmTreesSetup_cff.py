@@ -27,19 +27,35 @@ def setTagsProbes(process, options):
         
         
     ####################### TAG ELECTRON ############################
-    process.tagEle = cms.EDProducer(eleHLTProducer,
-                                        filterNames = cms.vstring(options['TnPHLTTagFilters']),
-                                        inputs      = cms.InputTag("tagEleCutBasedTight"),
-                                        bits        = cms.InputTag('TriggerResults::' + options['HLTProcessName']),
-                                        objects     = cms.InputTag(hltObjects),
-                                        dR          = cms.double(0.3),
-                                        isAND       = cms.bool(True)
-                                    )
+    # process.tagEle = cms.EDProducer(eleHLTProducer,
+    #                                     filterNames = cms.vstring(options['TnPHLTTagFilters']),
+    #                                     inputs      = cms.InputTag("tagEleCutBasedTight"),
+    #                                     bits        = cms.InputTag('TriggerResults::' + options['HLTProcessName']),
+    #                                     objects     = cms.InputTag(hltObjects),
+    #                                     dR          = cms.double(0.3),
+    #                                     isAND       = cms.bool(True)
+    #                                 )
+
+    # To avoid HLT, just replace tagEle with tagEleCutBasedTight.
+    # The alternative would be to track down all the producers using tagEle as inputs...
+    
+    # Need to move the following 5 lines up here (instead of at the bottom), otherwise can't clone
+    ######################## probe passing ID ##########################
+    import EgammaAnalysis.TnPTreeProducer.egmElectronIDModules_cff as egmEleID
+    import EgammaAnalysis.TnPTreeProducer.egmPhotonIDModules_cff   as egmPhoID
+    egmEleID.setIDs(process, options)
+    egmPhoID.setIDs(process, options)
+
+    process.tagEle = process.tagEleCutBasedTight.clone()
+
 
     ##################### PROBE ELECTRONs ###########################
-    process.probeEle             = process.tagEle.clone()
-    process.probeEle.filterNames = cms.vstring(options['TnPHLTProbeFilters'])
-    process.probeEle.inputs      = cms.InputTag("goodElectrons")  
+    # process.probeEle             = process.tagEle.clone()
+    # process.probeEle.filterNames = cms.vstring(options['TnPHLTProbeFilters'])
+    # process.probeEle.inputs      = cms.InputTag("goodElectrons")  
+
+    # To avoid HLT, just replace probeEle with goodElectrons
+    process.probeEle = process.goodElectrons.clone()
 
     ################# PROBE ELECTRONs passHLT #######################
     process.probeElePassHLT              = process.tagEle.clone()
@@ -122,11 +138,11 @@ def setTagsProbes(process, options):
     process.tnpPairingPhoIDs.decay       = cms.string("tagEle probePho")
     process.tnpPairingPhoIDs.checkCharge = cms.bool(False)
 
-    ######################## probe passing ID ##########################
-    import EgammaAnalysis.TnPTreeProducer.egmElectronIDModules_cff as egmEleID
-    import EgammaAnalysis.TnPTreeProducer.egmPhotonIDModules_cff   as egmPhoID
-    egmEleID.setIDs(process, options)
-    egmPhoID.setIDs(process, options)
+    # ######################## probe passing ID ##########################
+    # import EgammaAnalysis.TnPTreeProducer.egmElectronIDModules_cff as egmEleID
+    # import EgammaAnalysis.TnPTreeProducer.egmPhotonIDModules_cff   as egmPhoID
+    # egmEleID.setIDs(process, options)
+    # egmPhoID.setIDs(process, options)
 
 ###################################################################################
 ################  --- SEQUENCES
