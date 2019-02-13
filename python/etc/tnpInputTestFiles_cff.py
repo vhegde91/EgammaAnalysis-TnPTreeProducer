@@ -4,6 +4,7 @@ filesMiniAOD_Preliminary2017 = {
     'mc' :  cms.untracked.vstring(
 #        '/store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10_ext1-v1/110000/02CF84A2-6086-E711-A3A1-0CC47A7C3458.root',#92X
         '/store/mc/RunIIFall17MiniAOD/DY1JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/20000/001C74A0-B4D6-E711-BD4B-FA163EB4F61D.root',#94X
+#        '/store/mc/RunIIFall17MiniAODv2/DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUFall17Fast_pilot_94X_mc2017_realistic_v15_ext1-v1/40000/04478B45-FC1A-E911-8BFB-0CC47A6C115A.root',
         ),
     
     'data' : cms.untracked.vstring( 

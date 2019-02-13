@@ -70,25 +70,25 @@ if __name__ == '__main__':
     config.Data.splitting     = 'LumiBased'
     config.Data.lumiMask      = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions17/13TeV/PromptReco/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt'
 #    config.Data.runRange         = '297050'
-    config.Data.unitsPerJob   = 100
+    config.Data.unitsPerJob   = 500
 #    config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_ReReco17_forValidation']
     config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=94X_dataRun2_v11']
  
-    config.General.requestName  = '31Mar2018_RunB'
+    config.General.requestName  = '31Mar2018_RunB_subV2'
     config.Data.inputDataset    = '/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD'
     submit(config)    
-    config.General.requestName  = '31Mar2018_RunC'
+    config.General.requestName  = '31Mar2018_RunC_subV2'
     config.Data.inputDataset    = '/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD'
-#    submit(config)    
+    submit(config)    
     config.General.requestName  = '31Mar2018_RunD'
     config.Data.inputDataset    = '/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD'
 #    submit(config)    
     config.General.requestName  = '31Mar2018_RunE'
     config.Data.inputDataset    = '/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD'
 #    submit(config)    
-    config.General.requestName  = '31Mar2018_RunF'
+    config.General.requestName  = '31Mar2018_RunF_subV2'
     config.Data.inputDataset    = '/SingleElectron/Run2017F-31Mar2018-v1/MINIAOD'
-#    submit(config)    
+    submit(config)    
 
 
 
