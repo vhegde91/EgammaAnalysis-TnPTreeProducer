@@ -22,7 +22,7 @@ from WMCore.Configuration import Configuration
 
 config = config()
 
-submitVersion ="Run2018_Partial_TreeV1"
+submitVersion ="Run2018_FastSim_TreeV1"
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=False'
 #doHLTTree = 'doTrigger=False'
@@ -35,7 +35,7 @@ config.General.transferLogs = False
 config.JobType.pluginName  = 'Analysis'
 
 # Name of the CMSSW configuration file
-config.JobType.psetName  = '/afs/cern.ch/work/v/vhegde/public/EGamma_v5_2018/CMSSW_10_2_5/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
+config.JobType.psetName  = '/afs/cern.ch/work/v/vhegde/public/EGamma_FastSim/Run2018/CMSSW_10_2_5/src/EgammaAnalysis/TnPTreeProducer/python/TnPTreeProducer_cfg.py'
 #config.Data.allowNonValidInputDataset = False
 config.JobType.sendExternalFolder     = True
 
@@ -43,6 +43,7 @@ config.Data.inputDBS = 'global'
 config.Data.publication = False
 config.Data.allowNonValidInputDataset = True
 #config.Data.publishDataName = 
+config.JobType.allowUndistributedCMSSW = True
 
 config.Site.storageSite = 'T3_US_FNALLPC'
 
@@ -72,15 +73,18 @@ if __name__ == '__main__':
     config.Data.splitting     = 'FileBased'
     config.Data.unitsPerJob   = 20
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
-    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=102X_upgrade2018_realistic_v12']
-
+    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=auto']
 
     config.General.requestName  = 'DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8'
     config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM'
-    submit(config)
+#    submit(config)
 
     config.General.requestName  = 'DYToEE_M-50_NNPDF31_TuneCP5_13TeV-powheg-pythia8'
     config.Data.inputDataset    = '/DYToEE_M-50_NNPDF31_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM'
+#    submit(config)
+
+    config.General.requestName  = 'DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8'
+    config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-PUFall18Fast_lhe_102X_upgrade2018_realistic_v15-v2/MINIAODSIM'
     submit(config)
 
 
@@ -88,26 +92,27 @@ if __name__ == '__main__':
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'data')
     config.Data.splitting     = 'LumiBased'
     config.Data.lumiMask      = '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions18/13TeV/PromptReco/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
-    config.Data.unitsPerJob   = 300
+    config.Data.unitsPerJob   = 600
     config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=102X_dataRun2_Sep2018Rereco_v1']
  
-    config.General.requestName  = 'Run2018A_17Sep18_Partial'
+    config.General.requestName  = 'Run2018A_17Sep18'
     config.Data.inputDataset    = '/EGamma/Run2018A-17Sep2018-v2/MINIAOD'
-    submit(config)    
 
-    config.General.requestName  = 'Run2018B_17Sep18_Partial'
+#    submit(config)    
+
+    config.General.requestName  = 'Run2018B_17Sep18'
     config.Data.inputDataset    = '/EGamma/Run2018B-17Sep2018-v1/MINIAOD'
-    submit(config)    
+#    submit(config)    
 
-    config.General.requestName  = 'Run2018C_17Sep18_Partial'
+    config.General.requestName  = 'Run2018C_17Sep18'
     config.Data.inputDataset    = '/EGamma/Run2018C-17Sep2018-v1/MINIAOD'
-    submit(config)    
+#    submit(config)    
 
-    config.General.requestName  = 'Run2018D_PromptReco-v1'
-    config.Data.inputDataset    = '/EGamma/Run2018D-PromptReco-v1/MINIAOD'
-    submit(config)    
+#    config.General.requestName  = 'Run2018D_PromptReco-v1'
+#    config.Data.inputDataset    = '/EGamma/Run2018D-PromptReco-v1/MINIAOD'
+##    submit(config)    
 
     config.JobType.pyCfgParams  = ['isMC=False',doEleTree,doPhoTree,'GT=102X_dataRun2_Prompt_v11']
     config.General.requestName  = 'Run2018D_PromptReco-v2'
     config.Data.inputDataset    = '/EGamma/Run2018D-PromptReco-v2/MINIAOD'
-    submit(config)    
+#    submit(config)    

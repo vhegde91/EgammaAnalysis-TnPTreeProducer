@@ -24,7 +24,7 @@ varOptions.register(
     )
 
 varOptions.register(
-    "doPhoID", True,
+    "doPhoID", False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Include tree for photon ID SF"
@@ -60,10 +60,10 @@ varOptions.register(
     )
 
 varOptions.register(
-    #"GT","auto",
+    "GT","auto",
     #"GT","101X_dataRun2_Prompt_v9",
     #"GT","94X_dataRun2_ReReco_EOY17_v6",
-    "GT","80X_dataRun2_2016LegacyRepro_v4",
+    #"GT","80X_dataRun2_2016LegacyRepro_v4",
     VarParsing.multiplicity.singleton,
     VarParsing.varType.string,
     "Global Tag to be used"
@@ -392,7 +392,7 @@ process.evtCounter = cms.EDAnalyzer('SimpleEventCounter')
 
 process.p = cms.Path(
         process.evtCounter        +
-        process.hltFilter         +
+#        process.hltFilter         +
         process.cand_sequence     + 
         process.tnpPairs_sequence +
         process.mc_sequence       +

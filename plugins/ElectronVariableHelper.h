@@ -112,8 +112,8 @@ void ElectronVariableHelper<T>::produce(edm::Event & iEvent, const edm::EventSet
   iEvent.getByToken(vtxToken_, vtxH);
   const reco::VertexRef vtx(vtxH, 0);
 
-  edm::Handle<BXVector<l1t::EGamma> > l1Cands;
-  iEvent.getByToken(l1EGToken_, l1Cands);
+  //  edm::Handle<BXVector<l1t::EGamma> > l1Cands;
+  //  iEvent.getByToken(l1EGToken_, l1Cands);
 
   edm::Handle<reco::ConversionCollection> conversions;
   iEvent.getByToken(conversionsToken_, conversions);
@@ -166,19 +166,19 @@ void ElectronVariableHelper<T>::produce(edm::Event & iEvent, const edm::EventSet
     float l1eta = 999999.;
     float l1phi = 999999.;
     float pfpt = 999999.;
-    float dRmin = 0.3;
+    /* float dRmin = 0.3; */
 
-    for (std::vector<l1t::EGamma>::const_iterator l1Cand = l1Cands->begin(0); l1Cand != l1Cands->end(0); ++l1Cand) {
+    /* for (std::vector<l1t::EGamma>::const_iterator l1Cand = l1Cands->begin(0); l1Cand != l1Cands->end(0); ++l1Cand) { */
 
-      float dR = deltaR(l1Cand->eta(), l1Cand->phi() , probe->superCluster()->eta(), probe->superCluster()->phi());
-      if (dR < dRmin) {
-        dRmin = dR;
-        l1e = l1Cand->energy();
-        l1et = l1Cand->et();
-        l1eta = l1Cand->eta();
-        l1phi = l1Cand->phi();
-      }
-    }
+    /*   float dR = deltaR(l1Cand->eta(), l1Cand->phi() , probe->superCluster()->eta(), probe->superCluster()->phi()); */
+    /*   if (dR < dRmin) { */
+    /*     dRmin = dR; */
+    /*     l1e = l1Cand->energy(); */
+    /*     l1et = l1Cand->et(); */
+    /*     l1eta = l1Cand->eta(); */
+    /*     l1phi = l1Cand->phi(); */
+    /*   } */
+    /* } */
     if( pfCands.isValid() )
     for( size_t ipf = 0; ipf < pfCands->size(); ++ipf ) {
         auto pfcand = pfCands->ptrAt(ipf);

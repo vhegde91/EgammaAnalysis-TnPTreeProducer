@@ -341,7 +341,7 @@ void SusyElectronVariableHelper::produce(edm::Event & iEvent, const edm::EventSe
     float mini_iso         = probe.userFloat("miniIsoAll")/probe.pt();
     float jetPtRatio       = probe.userFloat("ptRatio");
     float jetPtRel         = probe.userFloat("ptRel");
-    int   missingInnerHits   = probe.gsfTrack()->hitPattern().numberOfAllHits(reco::HitPattern::MISSING_INNER_HITS);
+    int   missingInnerHits   = probe.gsfTrack()->hitPattern().numberOfLostHits(reco::HitPattern::MISSING_INNER_HITS);
     float leptonMva        = (*leptonMvas)[ppLepMVA];
 
 
