@@ -1,20 +1,22 @@
 # EgammaAnalysis-TnPTreeProducer
 TnP package for EGM
 
-For regular users
-1. install
+# EgammaAnalysis-TnPTreeProducer
+TnP package for EGM
 
-git clone -b CMSSW_9_4_X https://github.com/cms-analysis/EgammaAnalysis-TnPTreeProducer.git EgammaAnalysis/TnPTreeProducer
+```
+cmsrel CMSSW_10_2_5
+cd CMSSW_10_2_5/src
+cmsenv
+```
 
+Copy some of the files from lxplus area	of vhegde. This	is not needed, if the EGM recipe (https://twiki.cern.ch/twiki/bin/view/CMSPublic/ElectronTagAndProbe) is working well.
+```
+cp -r /afs/cern.ch/work/v/vhegde/public/EGamma_FastSim/Run2018/CMSSW_10_2_5/src/* .
+```
 
+Clone the repo for 2018 FastSim. If you have copied files using the command above, the you do not need this step.
+```
+git clone -b MC2018_FastSim https://github.com/vhegde91/EgammaAnalysis-TnPTreeProducer
 
-For developpers
-1. On github fork the package https://github.com/cms-analysis/EgammaAnalysis-TnPTreeProducer 
-2. Add the remote 
-
-git remote add username-push git@github.com:username/EgammaAnalysis-TnPTreeProducer.git
-
-3. push commits to fork and then standard pull request process
-git push username-push branchname
-
-4. submit jobs
+```
