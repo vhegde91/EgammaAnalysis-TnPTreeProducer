@@ -206,3 +206,43 @@ Traceback (most recent call last):
   File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1809-comp/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 575, in validateOptions
     raise ConfigurationException(msg)
 ConfigurationException: [91mError[0m: crab_Run2018_Partial_TreeV1/crab_Run2018D_PromptReco-v is not a valid CRAB project directory.
+DEBUG 2018-11-30 12:35:42,051: 	 Executing command: 'resubmit'
+DEBUG 2018-11-30 12:35:42,053: 	 Found CRAB cache file /afs/cern.ch/user/v/vhegde/.crab3
+DEBUG 2019-03-07 12:32:43,216: 	 Executing command: 'submit'
+DEBUG 2019-03-07 12:32:43,307: 	 Found CRAB cache file /afs/cern.ch/user/v/vhegde/.crab3
+DEBUG 2019-03-07 12:32:43,334: 	 Checking credentials
+DEBUG 2019-03-07 12:32:43,334: 	 Found proxy file /tmp/x509up_u79799
+DEBUG 2019-03-07 12:32:43,334: 	 Getting proxy life time left
+DEBUG 2019-03-07 12:32:45,113: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u79799 -timeleft
+ output : 21745
+
+ error: 
+ retcode : 0
+DEBUG 2019-03-07 12:32:46,947: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u79799 -actimeleft
+ output : 21743
+
+ error: 
+ retcode : 0
+DEBUG 2019-03-07 12:32:46,947: 	 Proxy lifetime 21745 secs is different from voms extension lifetime 21743 secs for proxy: /tmp/x509up_u79799
+DEBUG 2019-03-07 12:32:46,948: 	 Proxy valid for 06:02:23 hours
+DEBUG 2019-03-07 12:33:56,208: 	 Executing command: 'submit'
+DEBUG 2019-03-07 12:33:56,257: 	 Found CRAB cache file /afs/cern.ch/user/v/vhegde/.crab3
+DEBUG 2019-03-07 12:33:56,314: 	 Checking credentials
+DEBUG 2019-03-07 12:33:56,314: 	 Found proxy file /tmp/x509up_u79799
+DEBUG 2019-03-07 12:33:56,314: 	 Getting proxy life time left
+DEBUG 2019-03-07 12:33:58,175: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u79799 -timeleft
+ output : 21672
+
+ error: 
+ retcode : 0
+DEBUG 2019-03-07 12:33:59,617: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u79799 -actimeleft
+ output : 21670
+
+ error: 
+ retcode : 0
+DEBUG 2019-03-07 12:33:59,618: 	 Proxy lifetime 21672 secs is different from voms extension lifetime 21670 secs for proxy: /tmp/x509up_u79799
+DEBUG 2019-03-07 12:33:59,618: 	 Proxy valid for 06:01:10 hours

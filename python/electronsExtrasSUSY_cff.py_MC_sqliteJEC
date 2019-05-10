@@ -36,10 +36,10 @@ def addSusyIDs(process, options):
 
     from CondCore.DBCommon.CondDBSetup_cfi import CondDBSetup
     process.jec = cms.ESSource("PoolDBESSource",CondDBSetup,
-                               connect = cms.string("sqlite:Autumn18_RunABCD_V8_DATA.db"),
+                               connect = cms.string("sqlite:Autumn18_V8_MC.db"),
                                toGet = cms.VPSet(
             cms.PSet(record = cms.string("JetCorrectionsRecord"),
-                     tag    = cms.string("JetCorrectorParametersCollection_Autumn18_RunABCD_V8_DATA_AK4PFchs"),
+                     tag    = cms.string("JetCorrectorParametersCollection_Autumn18_V8_MC_AK4PFchs"),
                      label  = cms.untracked.string("AK4PFchs")),
             ),
            )
