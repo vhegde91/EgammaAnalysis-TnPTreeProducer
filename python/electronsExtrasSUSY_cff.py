@@ -34,6 +34,18 @@ def addSusyIDs(process, options):
     from PhysicsTools.NanoAOD.electrons_cff import slimmedElectronsWithUserData
     from PhysicsTools.NanoAOD.electrons_cff import electronMVATTH
 
+    from CondCore.DBCommon.CondDBSetup_cfi import CondDBSetup
+    process.jec = cms.ESSource("PoolDBESSource",CondDBSetup,
+                               connect = cms.string("sqlite:Autumn18_V8_MC.db"),
+                               toGet = cms.VPSet(
+            cms.PSet(record = cms.string("JetCorrectionsRecord"),
+                     tag    = cms.string("JetCorrectorParametersCollection_Autumn18_V8_MC_AK4PFchs"),
+                     label  = cms.untracked.string("AK4PFchs")),
+            ),
+           )
+    process.es_prefer_jec = cms.ESPrefer("PoolDBESSource", 'jec')
+
+
     if (doJEC):
         from PhysicsTools.NanoAOD.jets_cff import updatedJets
         from PhysicsTools.NanoAOD.jets_cff import jetCorrFactorsNano # is this needed?
@@ -130,7 +142,7 @@ def addSusyIDs(process, options):
     if (doJEC) :
         process.susy_sequence += process.jetCorrFactorsNano
         process.susy_sequence += process.updatedJets
-    
+
     process.susy_sequence += process.ptRatioRelForEleUncorr
 
     process.susy_sequence += process.isoForEle

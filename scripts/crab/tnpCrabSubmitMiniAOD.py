@@ -22,7 +22,7 @@ from WMCore.Configuration import Configuration
 
 config = config()
 
-submitVersion ="Run2018_FastSim_TreeV1"
+submitVersion ="Run2018_FastSim_Moriond19JEC_TreeV2"
 doEleTree = 'doEleID=True'
 doPhoTree = 'doPhoID=False'
 #doHLTTree = 'doTrigger=False'
@@ -73,7 +73,8 @@ if __name__ == '__main__':
     config.Data.splitting     = 'FileBased'
     config.Data.unitsPerJob   = 20
     config.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
-    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=auto']
+    config.JobType.pyCfgParams  = ['isMC=True',doEleTree,doPhoTree,'GT=102X_upgrade2018_realistic_v12']
+    config.JobType.inputFiles   = ['/afs/cern.ch/work/v/vhegde/public/EGamma_FastSim/Run2018/CMSSW_10_2_5/src/EgammaAnalysis/TnPTreeProducer/python/Autumn18_V8_MC.db']
 
     config.General.requestName  = 'DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8'
     config.Data.inputDataset    = '/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM'
